@@ -1,0 +1,24 @@
+{
+  "name": "kokonosebot-commando",
+  "version": "1.0.0",
+  "description": "Discord bot for the French Kagepro Server",
+  "main": "Kokonosebot-commando.js",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "discord.js-commando": "^0.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Legonzaur/Kokonosebot-commando.git"
+  },
+  "author": "Legonzaur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Legonzaur/Kokonosebot-commando/issues"
+  },
+  "homepage": "https://github.com/Legonzaur/Kokonosebot-commando#readme"
+}
