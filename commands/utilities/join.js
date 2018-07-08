@@ -1,29 +1,43 @@
 const { Command } = require('discord.js-commando');
 const utils = require("../../fonctions/utils.js");
 var preferencies =  utils.createJsonFile("preferencies.json")
+<<<<<<< HEAD
 const fs = require('fs');
+=======
+>>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
 
 module.exports = class ReplyCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'join',
+<<<<<<< HEAD
             group: 'utilities',
+=======
+            group: 'emoji',
+>>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
             memberName: 'join',
             description: 'Fait rejoindre le bot le salon vocal dans lequel vous êtes. WIP',
             examples: ['*join*'],
             guildOnly: true,
             args: [
                 {
+<<<<<<< HEAD
                     key: 'voiceChannel',
                     prompt: 'Quel salon vocal voulez vous que le bot rejoigne?',
                     type: 'channel'
                     
+=======
+                    key: 'Salon vocal',
+                    prompt: 'What text would you like the bot to say?',
+                    type: 'string'
+>>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
                 }
             ],
             clientPermissions: ['CONNECT', 'SPEAK', 'USE_VAD'],
         });
     }
 
+<<<<<<< HEAD
     
     async run(msg, voiceChannel) {
 
@@ -58,5 +72,9 @@ module.exports = class ReplyCommand extends Command {
               });
         }
         
+=======
+    async run(msg) {
+       
+>>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
     }
 }
