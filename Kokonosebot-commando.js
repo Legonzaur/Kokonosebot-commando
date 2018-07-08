@@ -6,14 +6,9 @@ const config = require('./config.json');
 const activities = require('./assets/json/activity');
 
 const utils = require("./fonctions/utils.js");
-<<<<<<< HEAD
 var preferencies =  utils.createJsonFile("preferencies.json");
 var emojiUsed =  utils.createJsonFile("emoji.json");
 var connected = utils.createJsonFile("connected.json");
-=======
-var preferencies =  utils.createJsonFile("preferencies.json")
-var emojiUsed =  utils.createJsonFile("emoji.json")
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
 
 const client = new CommandoClient({
     commandPrefix: '$',
@@ -69,11 +64,7 @@ const messagedeleted = (msg) => {
         }
         if(msg.content == "$$") return;
         var embed = new RichEmbed();
-<<<<<<< HEAD
         embed.setAuthor(utils.getNickname(msg, msg.author.id, msg.guild), msg.author.avatarURL);
-=======
-        embed.setAuthor(utils.getNickname(msg, msg.author.id, client.guilds.find("id", "230405441845329930")), msg.author.avatarURL);
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
         embed.setTitle(msg.guild.name + " dans le salon " +   msg.channel.name)
         embed.setColor(msg.guild.members.find("id", msg.author.id).displayHexColor);
         embed.addField((Date.now() - msg.createdTimestamp)/1000  + ' secondes' , msg.content)
@@ -105,11 +96,7 @@ const messagedeleted = (msg) => {
         }
         if(mentionné.length != 0){
             var embed = new RichEmbed();
-<<<<<<< HEAD
             embed.setAuthor(utils.getNickname(msg, msg.author.id, msg.guild), msg.author.avatarURL);
-=======
-            embed.setAuthor(utils.getNickname(msg, msg.author.id, client.guilds.find("id", "230405441845329930")), msg.author.avatarURL);
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
             embed.setColor(msg.guild.members.find("id", msg.author.id).displayHexColor);
             embed.addField((Date.now() - msg.createdTimestamp)/1000  + ' secondes. Trop Rapide!' , "A supprimé un message mentionnant " + mentionné)
             msg.channel.send(embed)
@@ -118,7 +105,6 @@ const messagedeleted = (msg) => {
     }
 };
 
-<<<<<<< HEAD
 const join = (GuildMember) => {
     
    /* if(!GuildMember.guild.available) return;
@@ -126,8 +112,6 @@ const join = (GuildMember) => {
     if(GuildMember.guild.id != "230405441845329930") return;
     GuildMember.guild.channels.get("464387069670850560").send(utils.getNickname(null, GuildMember.id, GuildMember.guild) + " A rejoint le serveur!") */
 }
-=======
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.guilds.find("id", "434283741775396864").channels.find("id", "446235430879494144").send(`Logged in as ${client.user.tag}!`)
@@ -137,7 +121,6 @@ client.on('ready', () => {
 		const activity = activities[Math.floor(Math.random() * activities.length)];
 		client.user.setActivity(activity.text, { type: activity.type });
 	}, 120000);
-<<<<<<< HEAD
     
     //stalk part 1 : nombre d'utilisateurs connectés par heure
     client.setInterval(() => {
@@ -148,11 +131,6 @@ client.on('ready', () => {
     }, 3600000)
 });
 client.on('guildMemberAdd', join)
-=======
-
-    
-});
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
 client.on('message', run);
 client.on('error',console.error);
 client.on("messageDelete", messagedeleted);

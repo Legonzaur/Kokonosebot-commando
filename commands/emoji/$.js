@@ -12,13 +12,10 @@ module.exports = class ReplyCommand extends Command {
             description: 'Fournit la liste des emoji custom',
             examples: ['*$*'],
             clientPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
-<<<<<<< HEAD
             throttling: {
                 usages: 1,
                 duration: 5
             },
-=======
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
         });
     }
 
@@ -37,10 +34,7 @@ module.exports = class ReplyCommand extends Command {
             var secondname = ""
             table[i+1] = ""
             }else{
-<<<<<<< HEAD
                 
-=======
->>>>>>> 87b86985ead0bd77f8182395487e83b04f45d240
             secondname = customEmoji[i+1].name
            second = customEmoji[i+1]
             }
