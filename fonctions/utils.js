@@ -45,9 +45,14 @@ module.exports = {
       })
     },
     saveFile : function(fileName, file){
+      if(!file) file = {}
       fs.writeFile( __dirname + "/../assets/db/" + fileName +".json", JSON.stringify(file), function(err) {
         if (err) return console.log(err);
       });
+      }
+      ,
+      daysInMonth : function(year, month){
+          return new Date(year, month, 0).getDate();
       }
   };
   

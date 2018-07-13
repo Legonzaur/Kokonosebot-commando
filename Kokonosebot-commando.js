@@ -40,6 +40,11 @@ const run = (msg) => {
             return utils.postCustomEmoji(msg, msg.author, msg.content, client);
         }
     }
+//Special kane des bisous
+if(msg.author.id == "189116981822226433" && msg.content.toLowerCase().indexOf("bez") > -1){
+    msg.reply("nous aussi on t'aime")
+}
+
     initialiseEmoji(msg);
     var emojilist = msg.guild.emojis.array()
     for(var i = 0; i<emojilist.length; i++){
@@ -105,6 +110,11 @@ const messagedeleted = (msg) => {
     }
 };
 
+const messageupdate = (old, msg) => {
+    if(msg.author.id == "189116981822226433" && msg.content.toLowerCase().indexOf("bez") > -1){
+        msg.reply("nous aussi on t'aime")
+    }
+}
 const join = (GuildMember) => {
     
    /* if(!GuildMember.guild.available) return;
@@ -126,12 +136,13 @@ client.on('ready', () => {
     client.setInterval(() => {
         var date = new Date();  
         var online = client.users.filter(user => user.presence.status != "offline");
-        connected[date.getTime()] = online.array().length;
+        connected[date.getUTCFullYear() +  "/" + date.getUTCMonth() + "/" + date.getUTCDay() + "/" + date.getUTCHours() + "/" + date.getUTCMinutes()] = online.array().length;
         utils.saveFile("connected", connected);
     }, 3600000)
 });
 client.on('guildMemberAdd', join)
 client.on('message', run);
 client.on('error',console.error);
+client.on('messageUpdate', messageupdate)
 client.on("messageDelete", messagedeleted);
 client.login(config.token);
