@@ -68,6 +68,9 @@ const messagedeleted = (msg) => {
             }
         }
         if(msg.content == "$$") return;
+        var mois = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        var temp = mois.join(".").toLowerCase().split(".");
+        if(temp.indexOf(msg.content.toLowerCase()) != -1)  return;
         var embed = new RichEmbed();
         embed.setAuthor(utils.getNickname(msg, msg.author.id, msg.guild), msg.author.avatarURL);
         embed.setTitle(msg.guild.name + " dans le salon " +   msg.channel.name)

@@ -1,5 +1,7 @@
 const { RichEmbed } = require('discord.js');
 const fs = require("fs");
+var http = require('http');
+var https = require('https')
 
 function getNickname(msg, userId, guild) {
   if(!guild){
@@ -53,6 +55,12 @@ module.exports = {
       ,
       daysInMonth : function(year, month){
           return new Date(year, month, 0).getDate();
+      },
+      downloadHttps : function(path, url){
+        var file = fs.createWriteStream(path);
+        var request = https.get(url, function(response) {
+        return response.pipe(file);
+});
       }
   };
   
