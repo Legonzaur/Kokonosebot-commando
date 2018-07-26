@@ -41,11 +41,14 @@ module.exports = class ReplyCommand extends Command {
             if(!Object.keys(request).length == 0 && request.constructor === Object){
                 var emojiSorted = Object.keys(request).sort(function(a,b){return request[b]-request[a]});
                 
+                
                 embed.setTitle(Object.values(request).reduce((a, b) => a + b) + " Emoji used")
                 
                 embed.setAuthor(nickname, avatarURL);
                 for(var i = 0; i<8; i++){
-                  if(emojiSorted[i]) embed.addField("\u200b", `<:${msg.guild.emojis.find("id", emojiSorted[i]).name}:${emojiSorted[i]}>  :  ${request[emojiSorted[i]]}`);
+                  if(emojiSorted[i]){
+                    if(msg.guild.emojis.find("id", emojiSorted[i]))embed.addField("\u200b", `<:${msg.guild.emojis.find("id", emojiSorted[i]).name}:${emojiSorted[i]}>  :  ${request[emojiSorted[i]]}`);
+                  } 
                 }
                 msg.channel.send(embed);
                 return null;
