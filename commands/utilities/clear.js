@@ -8,33 +8,34 @@ module.exports = class ReplyCommand extends Command {
             group: 'utilities',
             memberName: 'clear',
             description: 'clear des messages dans un salon',
-            examples: ['*clear 8*', '*clear @Legonzaur#2100*'],
+            examples: ['*clear 8*', '*clear 11 @Legonzaur#2100*'],
             clientPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
             args: [
                 {
-                    key: 'team',
-                    prompt: 'Quelle team voulez vous rejoindre?',
-                    type: 'role'
+                    key: 'nombre',
+                    prompt: 'Combien de messages?',
+                    type: 'integer'
+                },
+                {
+                    key: 'user',
+                    prompt: 'De quel utilsateur voulez vous supprimer les messages?',
+                    type: 'user',
+                    default : "0"
                 }
             ],
-            throttling: {
-                usages: 1,
-                duration: 60
-            },
+
         });
     }
+    hasPermission(msg){
+        return msg.member.hasPermission('MANAGE_MESSAGES', false, true, true);
+    }
 
-    async run(msg, {team}) {
-        if(team.name.toLowerCase().indexOf('team') > -1){
-            var rolesUser = this.client.guilds.get(msg.guild.id).members.get(msg.author.id).roles.filterArray(role => role.name.toLowerCase().indexOf('team') > -1);
-            try {
-                await this.client.guilds.get(msg.guild.id).members.get(msg.author.id).removeRoles(rolesUser);
-                this.client.guilds.get(msg.guild.id).members.get(msg.author.id).addRole(team);
-            } catch (error) {
-                if(error.message == "Missing Permissions") msg.reply("Le bot n'a pas les permissions nécessaires pour vous changer de rôle");
+    async run(msg, {user, nombre}) {
+        msg.channel.fetchMessages({ limit : nombre+1})
+        .then(messages => {
+            for(var i = 0; i<nombre; i++){
+                messages.array()[i].delete()
             }
-        }else{
-            msg.reply("Ce rôle n'est pas une team!")
-        }
+        })
     }
 };

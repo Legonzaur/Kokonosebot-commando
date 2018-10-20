@@ -34,7 +34,7 @@ module.exports = class ReplyCommand extends Command {
         }
         else if(user.user.id != 0){
             var nickname = utils.getNickname(msg, user.user.id);
-            var avatarURL = msg.author.displayAvatarURL;
+            var avatarURL = user.user.displayAvatarURL;
             embed.setColor(msg.guild.members.find("id", user.user.id).displayHexColor);
         }
         if(request){
